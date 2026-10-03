@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Parking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+
+            <!-- =========================
+                 TITLE
+            ========================== -->
+
+            <h1>Smart Parking</h1>
+
+            <p class="subtitle">
+                Parking Slot Allocation System
+            </p>
+
+
+            <!-- =========================
+                 USER / ADMIN BUTTONS
+            ========================== -->
+
+            <div class="role-selection">
+
+                <button
+                    id="userBtn"
+                    class="role-btn active"
+                    onclick="selectRole('user')">
+
+                    User Login
+
+                </button>
+
+
+                <button
+                    id="adminBtn"
+                    class="role-btn"
+                    onclick="selectRole('admin')">
+
+                    Administration
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 LOGIN FORM
+            ========================== -->
+
+            <div id="loginForm">
+
+
+                <!-- LOGIN ID -->
+
+                <label id="loginIdLabel">
+                    Register ID Number
+                </label>
+
+
+                <input
+                    type="text"
+                    id="loginId"
+                    name="login-user-id"
+                    placeholder="Enter register ID"
+                    autocomplete="off"
+                >
+
+
+                <!-- =========================
+                     ADMIN PHONE NUMBER
+                ========================== -->
+
+                <div
+                    id="loginPhoneBox"
+                    class="hidden"
+                >
+
+                    <label>
+                        Phone Number
+                    </label>
+
+
+                    <div class="otp-row">
+
+                        <input
+                            type="tel"
+                            id="loginPhone"
+                            name="login-phone"
+                            placeholder="Enter phone number"
+                            autocomplete="off"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="otp-btn"
+                            onclick="sendOTP('login')"
+                        >
+
+                            Send OTP
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ADMIN OTP
+                ========================== -->
+
+                <div
+                    id="loginOtpBox"
+                    class="hidden"
+                >
+
+                    <label>
+                        OTP
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="loginOtp"
+                        name="login-otp"
+                        placeholder="Enter OTP"
+                        maxlength="6"
+                        autocomplete="one-time-code"
+                    >
+
+
+                    <p
+                        id="loginOtpMessage"
+                        class="otp-message"
+                    >
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     LOGIN PASSWORD
+                ========================== -->
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="login-password"
+                        placeholder="Enter password"
+                        autocomplete="new-password"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        onclick="togglePassword(
+                            'loginPassword',
+                            this
+                        )"
+                    >
+
+                        👁
+
+                    </button>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="button"
+                    class="main-btn"
+                    onclick="login()"
+                >
+
+                    LOGIN
+
+                </button>
+
+
+                <!-- SIGN UP LINK -->
+
+                <p class="signup-text">
+
+                    Don't have an account?
+
+                    <button
+                        type="button"
+                        class="link-btn"
+                        onclick="showSignup()"
+                    >
+
+                        Sign Up
+
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 SIGN UP FORM
+            ========================== -->
+
+            <div
+                id="signupForm"
+                class="hidden"
+            >
+
+
+                <h2>
+                    Create Account
+                </h2>
+
+
+                <!-- SIGNUP ID -->
+
+                <label id="signupIdLabel">
+                    Register ID Number
+                </label>
+
+
+                <input
+                    type="text"
+                    id="signupId"
+                    name="signup-id"
+                    placeholder="Enter register ID"
+                    autocomplete="off"
+                >
+
+
+                <!-- =========================
+                     ADMIN SIGNUP PHONE
+                ========================== -->
+
+                <div
+                    id="signupPhoneBox"
+                    class="hidden"
+                >
+
+                    <label>
+                        Phone Number
+                    </label>
+
+
+                    <div class="otp-row">
+
+                        <input
+                            type="tel"
+                            id="signupPhone"
+                            name="signup-phone"
+                            placeholder="Enter phone number"
+                            autocomplete="off"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="otp-btn"
+                            onclick="sendOTP('signup')"
+                        >
+
+                            Send OTP
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ADMIN SIGNUP OTP
+                ========================== -->
+
+                <div
+                    id="signupOtpBox"
+                    class="hidden"
+                >
+
+                    <label>
+                        OTP
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="signupOtp"
+                        name="signup-otp"
+                        placeholder="Enter OTP"
+                        maxlength="6"
+                        autocomplete="one-time-code"
+                    >
+
+
+                    <p
+                        id="signupOtpMessage"
+                        class="otp-message"
+                    >
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     SIGNUP PASSWORD
+                ========================== -->
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        name="signup-password"
+                        placeholder="Create password"
+                        autocomplete="new-password"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        onclick="togglePassword(
+                            'signupPassword',
+                            this
+                        )"
+                    >
+
+                        👁
+
+                    </button>
+
+                </div>
+
+
+                <!-- =========================
+                     CONFIRM PASSWORD
+                ========================== -->
+
+                <label>
+                    Re-enter Password
+                </label>
+
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="signupConfirmPassword"
+                        name="signup-confirm-password"
+                        placeholder="Re-enter password"
+                        autocomplete="new-password"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        onclick="togglePassword(
+                            'signupConfirmPassword',
+                            this
+                        )"
+                    >
+
+                        👁
+
+                    </button>
+
+                </div>
+
+
+                <!-- CREATE ACCOUNT -->
+
+                <button
+                    type="button"
+                    class="main-btn"
+                    onclick="signup()"
+                >
+
+                    CREATE ACCOUNT
+
+                </button>
+
+
+                <!-- LOGIN LINK -->
+
+                <p class="signup-text">
+
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        class="link-btn"
+                        onclick="showLogin()"
+                    >
+
+                        Login
+
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

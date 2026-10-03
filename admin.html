@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Admin</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🅿️
+            <span>Smart Parking</span>
+        </div>
+
+        <div class="admin-label">
+            ADMIN PANEL
+        </div>
+
+        <button class="sidebar-btn active" onclick="showAdminSection('dashboard')">
+            📊 Dashboard
+        </button>
+
+        <button class="sidebar-btn" onclick="showAdminSection('slots')">
+            🅿️ Parking Slots
+        </button>
+
+        <button class="sidebar-btn" onclick="showAdminSection('history')">
+            📋 Parking History
+        </button>
+
+        <button class="sidebar-btn" onclick="showAdminSection('users')">
+            👥 Users
+        </button>
+
+        <button class="sidebar-btn" onclick="showAdminSection('revenue')">
+            💰 Revenue
+        </button>
+
+        <button class="sidebar-btn" onclick="resetParking()">
+            🔄 Reset Parking
+        </button>
+
+        <button class="sidebar-btn logout-btn" onclick="adminLogout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="top-header">
+
+            <div>
+                <h1 id="pageTitle">Admin Dashboard</h1>
+                <p>Manage and monitor the smart parking system</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">👨‍💼</div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>System Admin</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <section id="adminDashboard" class="admin-section">
+
+            <div class="welcome-card">
+
+                <div>
+                    <h2>Welcome, Admin 👋</h2>
+
+                    <p>
+                        Monitor parking slots, users, bookings and revenue
+                        from one place.
+                    </p>
+                </div>
+
+                <div class="welcome-icon">
+                    🅿️
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">🅿️</div>
+
+                    <div>
+                        <h3>Total Slots</h3>
+                        <strong id="adminTotalSlots">20</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">🟢</div>
+
+                    <div>
+                        <h3>Available</h3>
+                        <strong id="adminAvailableSlots">20</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon red">🔴</div>
+
+                    <div>
+                        <h3>Occupied</h3>
+                        <strong id="adminOccupiedSlots">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">🚗</div>
+
+                    <div>
+                        <h3>Vehicles Served</h3>
+                        <strong id="adminVehiclesServed">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">💰</div>
+
+                    <div>
+                        <h3>Total Revenue</h3>
+                        <strong id="adminRevenue">₹0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- QUICK INFORMATION -->
+
+            <div class="section-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Parking Status</h2>
+                        <p>Current status of all parking slots</p>
+                    </div>
+
+                    <button class="refresh-btn" onclick="loadAdminDashboard()">
+                        🔄 Refresh
+                    </button>
+                </div>
+
+                <div id="dashboardSlotPreview" class="slot-preview"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PARKING SLOTS
+        ========================== -->
+
+        <section id="adminSlots" class="admin-section hidden">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Parking Slots</h2>
+                    <p>Manage all 20 parking slots</p>
+                </div>
+
+                <button class="refresh-btn" onclick="loadAdminSlots()">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div id="adminSlotsContainer" class="admin-slots-grid"></div>
+
+        </section>
+
+
+        <!-- =========================
+             PARKING HISTORY
+        ========================== -->
+
+        <section id="adminHistory" class="admin-section hidden">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Parking History</h2>
+                    <p>View all parking bookings</p>
+                </div>
+
+                <button class="refresh-btn" onclick="loadAdminHistory()">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div id="adminHistoryContainer"></div>
+
+        </section>
+
+
+        <!-- =========================
+             USERS
+        ========================== -->
+
+        <section id="adminUsers" class="admin-section hidden">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Registered Users</h2>
+                    <p>Users who have used the parking system</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+                    <h3>Parking Users</h3>
+                    <p id="adminUserCount">
+                        Users will appear here based on parking activity.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="adminUsersContainer"></div>
+
+        </section>
+
+
+        <!-- =========================
+             REVENUE
+        ========================== -->
+
+        <section id="adminRevenueSection" class="admin-section hidden">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Revenue</h2>
+                    <p>Parking revenue overview</p>
+                </div>
+            </div>
+
+            <div class="revenue-card">
+
+                <div class="revenue-icon">
+                    💰
+                </div>
+
+                <div>
+                    <h3>Total Revenue</h3>
+                    <strong id="revenueTotal">₹0</strong>
+                    <p>Generated from confirmed parking bookings</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

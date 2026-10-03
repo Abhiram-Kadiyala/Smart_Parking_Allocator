@@ -1,0 +1,147 @@
+{
+  "slots": [
+    {
+      "id": "B1",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B2",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B3",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B4",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B5",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B6",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B7",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B8",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B9",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B10",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B11",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B12",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B13",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B14",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B15",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B16",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B17",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B18",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B19",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    },
+    {
+      "id": "B20",
+      "status": "Available",
+      "vehicleNumber": null,
+      "vehicleType": null,
+      "parkedAt": null
+    }
+  ],
+  "history": [],
+  "users": [],
+  "revenue": 0
+}

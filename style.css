@@ -1,0 +1,434 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f4f7fb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* MAIN CONTAINER */
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* LOGIN CARD */
+
+.login-card {
+    width: 500px;
+    max-width: 100%;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* TITLE */
+
+h1 {
+    text-align: center;
+
+    color: #1557b0;
+
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 16px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ROLE BUTTONS */
+
+.role-selection {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.role-btn {
+    flex: 1;
+
+    height: 48px;
+
+    border: 1px solid #1557b0;
+
+    background: white;
+
+    color: #1557b0;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.role-btn.active {
+    background: #1557b0;
+
+    color: white;
+}
+
+
+/* HEADINGS */
+
+h2 {
+    text-align: center;
+
+    color: #1557b0;
+
+    font-size: 28px;
+
+    margin-bottom: 25px;
+}
+
+
+/* LABEL */
+
+label {
+    display: block;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #222;
+
+    margin-bottom: 7px;
+
+    margin-top: 18px;
+}
+
+
+/* INPUT */
+
+input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: #1557b0;
+}
+
+
+/* PHONE + OTP */
+
+.otp-row {
+    display: flex;
+
+    gap: 8px;
+}
+
+.otp-row input {
+    flex: 1;
+}
+
+.otp-btn {
+    padding: 0 15px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1557b0;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.otp-btn:hover {
+    background: #0e438c;
+}
+
+
+/* PASSWORD */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 50px;
+}
+
+.eye-btn {
+    position: absolute;
+
+    right: 10px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+
+/* MAIN BUTTON */
+
+.main-btn {
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 28px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1557b0;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.main-btn:hover {
+    background: #0e438c;
+}
+
+
+/* SIGNUP / LOGIN TEXT */
+
+.signup-text {
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #666;
+
+    font-size: 15px;
+}
+
+.link-btn {
+    border: none;
+
+    background: none;
+
+    color: #1557b0;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+/* OTP MESSAGE */
+
+.otp-message {
+    margin-top: 6px;
+
+    color: #1557b0;
+
+    font-size: 13px;
+}
+
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+
+/* SMALL SCREEN */
+
+@media (max-width: 550px) {
+
+    .login-card {
+        padding: 30px 22px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .role-selection {
+        flex-direction: column;
+    }
+
+}
+
+/* ============================= */
+/* PARKING OVERVIEW */
+/* ============================= */
+
+#parkingSummarySection {
+    width: 100%;
+    padding: 20px 20px 40px;
+    box-sizing: border-box;
+}
+
+#parkingSummarySection h2 {
+    text-align: center;
+    color: #1557b0;
+    font-size: 38px;
+    margin: 10px 0 5px;
+}
+
+#parkingSummarySection > p {
+    text-align: center;
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Statistics cards */
+
+.stats-grid {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    min-height: 130px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.stat-card h3 {
+    color: #555;
+    font-size: 17px;
+    margin: 5px 0;
+}
+
+.stat-card strong {
+    color: #1557b0;
+    font-size: 28px;
+}
+
+.revenue-card strong {
+    color: #2e7d32;
+}
+
+/* Next button */
+
+.next-btn {
+    display: block;
+
+    margin: 10px auto 0;
+
+    background: #1557b0;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 13px 32px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.next-btn:hover {
+    background: #0e438c;
+}
+
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 800px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #parkingSummarySection h2 {
+        font-size: 30px;
+    }
+}

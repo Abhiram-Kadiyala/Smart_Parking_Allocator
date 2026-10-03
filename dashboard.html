@@ -1,0 +1,1391 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+<head> 
+ 
+    <meta charset="UTF-8"> 
+ 
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0"> 
+ 
+    <title>Smart Parking Dashboard</title> 
+ 
+    <link rel="stylesheet" 
+          href="dashboard.css"> 
+ 
+</head> 
+ 
+ 
+<body> 
+ 
+ 
+    <!-- ========================================== 
+         TOP HEADER 
+         ========================================== --> 
+ 
+    <header class="top-header"> 
+ 
+        <h1> 
+            WELCOME TO SMART PARKING SLOT ALLOCATOR 
+        </h1> 
+ 
+        <button class="logout-btn" 
+                onclick="logout()"> 
+ 
+            Logout 
+ 
+        </button> 
+ 
+    </header> 
+ 
+ 
+ 
+    <!-- ========================================== 
+         DASHBOARD CONTAINER 
+         ========================================== --> 
+ 
+    <div class="dashboard-container"> 
+ 
+ 
+        <!-- ========================================== 
+             LEFT SIDEBAR 
+             ========================================== --> 
+ 
+        <aside class="sidebar"> 
+ 
+ 
+            <button class="sidebar-btn" 
+                    onclick="showProfile()"> 
+ 
+                👤 Profile 
+ 
+            </button> 
+ 
+ 
+            <div class="features-title"> 
+ 
+                FEATURES 
+ 
+            </div> 
+ 
+ 
+            <button class="sidebar-btn" 
+                    onclick="showParking()"> 
+ 
+                🅿 Parking 
+ 
+            </button> 
+ 
+ 
+           <button class="sidebar-btn" onclick="showParkingHistory()">
+    📊 Parking History
+</button>
+ 
+ 
+            <button class="sidebar-btn" onclick="showParkingMap()">
+    📍 Parking Map
+</button>
+ 
+ 
+        </aside> 
+ 
+ 
+ 
+        <!-- ========================================== 
+             MAIN CONTENT 
+             ========================================== --> 
+ 
+        <main class="main-content"> 
+ <!-- ==========================================
+     PARKING HISTORY
+========================================== -->
+
+<div id="historySection" class="parking-next-section hidden">
+
+    <h2>Parking History</h2>
+
+    <p class="parking-subtitle">
+        View your previous parking bookings
+    </p>
+
+    <div id="historyContainer"></div>
+
+</div>
+<!-- ==========================================
+     PARKING HISTORY
+========================================== -->
+
+<div id="historySection" class="parking-next-section hidden">
+
+    <h2>Parking History</h2>
+
+    <p class="parking-subtitle">
+        View your previous parking bookings
+    </p>
+
+    <div id="historyContainer"></div>
+
+</div>
+
+
+<!-- ==========================================
+     PARKING MAP
+========================================== -->
+
+<div id="parkingMapSection" class="parking-next-section hidden">
+
+    <h2>Parking Map</h2>
+
+    <p class="parking-subtitle">
+        Live view of all parking slots
+    </p>
+
+    <div class="parking-map">
+
+        <!-- Gate -->
+        <div class="map-gate">
+            🚪 MAIN GATE
+        </div>
+
+        <!-- Parking Slots -->
+        <div id="mapSlotsContainer" class="map-slots">
+        </div>
+
+        <!-- Exit -->
+        <div class="map-exit">
+            🚗 EXIT
+        </div>
+
+    </div>
+
+    <!-- Legend -->
+
+    <div class="map-legend">
+
+        <div class="legend-item">
+            <span class="legend-box available-box"></span>
+            Available
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-box occupied-box"></span>
+            Occupied
+        </div>
+
+    </div>
+
+</div>
+
+ 
+ 
+            <!-- ========================================== 
+                 WELCOME 
+                 ========================================== --> 
+ 
+            <div id="welcomeSection"> 
+ 
+                <h2> 
+                    Smart Parking Dashboard 
+                </h2> 
+ 
+                <p> 
+                    Select a feature from the left side to continue. 
+                </p> 
+ 
+            </div> 
+ 
+ 
+ 
+            <!-- ========================================== 
+                 PROFILE 
+                 ========================================== --> 
+ 
+            <div id="profileSection" 
+                 class="profile-card hidden"> 
+ 
+ 
+                <h2> 
+                    My Profile 
+                </h2> 
+ 
+ 
+                <div class="profile-details"> 
+ 
+ 
+                    <p> 
+ 
+                        <strong id="profileIdLabel"> 
+                            Register ID: 
+                        </strong> 
+ 
+                        <span id="profileId"> 
+                            - 
+                        </span> 
+ 
+                    </p> 
+ 
+ 
+                    <p> 
+ 
+                        <strong> 
+                            Account Type: 
+                        </strong> 
+ 
+                        <span id="profileRole"> 
+                            - 
+                        </span> 
+ 
+                    </p> 
+ 
+ 
+                    <p id="profilePhoneRow"> 
+ 
+                        <strong> 
+                            Phone Number: 
+                        </strong> 
+ 
+                        <span id="profilePhone"> 
+                            - 
+                        </span> 
+ 
+                    </p> 
+ 
+ 
+                </div> 
+ 
+ 
+            </div> 
+ 
+ 
+ 
+            <!-- ========================================== 
+                 PARKING SECTION 
+                 ========================================== --> 
+ 
+            <div id="parkingSection" 
+                 class="parking-section hidden"> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     ENVIRONMENT SELECTION 
+                     ========================================== --> 
+ 
+                <div id="environmentSelection"> 
+ 
+ 
+                    <h2> 
+                        Select Parking Environment 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Choose where you want to park 
+                        your vehicle 
+ 
+                    </p> 
+ 
+ 
+                    <div class="parking-options"> 
+ 
+ 
+                        <!-- COLLEGE --> 
+ 
+                        <div class="parking-option" 
+                             onclick="selectEnvironment('college')"> 
+ 
+ 
+                            <div class="parking-icon"> 
+ 
+                                🏫 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                College Campus 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Student, staff and visitor parking 
+ 
+                            </p> 
+ 
+ 
+                            <button type="button"> 
+ 
+                                Select College 
+ 
+                            </button> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- OFFICE --> 
+ 
+                        <div class="parking-option" 
+                             onclick="selectEnvironment('office')"> 
+ 
+ 
+                            <div class="parking-icon"> 
+ 
+                                🏢 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Office / IT Campus 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Employee and visitor parking 
+ 
+                            </p> 
+ 
+ 
+                            <button type="button"> 
+ 
+                                Select Office 
+ 
+                            </button> 
+ 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     COLLEGE PARKING AREA 
+                     ========================================== --> 
+ 
+                <div id="collegeParkingSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToEnvironment()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+                        College Parking 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Select the parking area 
+ 
+                    </p> 
+ 
+ 
+                    <div class="selection-grid"> 
+ 
+ 
+                        <!-- MAIN GATE --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Main Gate Parking')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🚪 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Main Gate Parking 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Parking near the main entrance 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- ACADEMIC --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Academic Block Parking')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                📚 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Academic Block 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Parking near academic buildings 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- HOSTEL --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Hostel Parking')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🏠 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Hostel Parking 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Parking near hostel buildings 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- ADMIN --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Admin Block Parking')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🏛️ 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Admin Block 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Parking near administration 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     ENTRY GATE 
+                     ========================================== --> 
+ 
+                <div id="gateSelection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToCollegeAreas()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Select Entry Gate 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Choose the gate you are entering from 
+ 
+                    </p> 
+ 
+ 
+                    <div class="selection-grid"> 
+ 
+ 
+                        <!-- GATE 1 --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectGate('Gate 1')"> 
+ 
+                            <div class="selection-icon"> 
+                                🚪 
+                            </div> 
+ 
+                            <h3> 
+                                Gate 1 
+                            </h3> 
+ 
+                            <p> 
+                                Main entrance 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- GATE 2 --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectGate('Gate 2')"> 
+ 
+                            <div class="selection-icon"> 
+                                🚪 
+                            </div> 
+ 
+                            <h3> 
+                                Gate 2 
+                            </h3> 
+ 
+                            <p> 
+                                East entrance 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- GATE 3 --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectGate('Gate 3')"> 
+ 
+                            <div class="selection-icon"> 
+                                🚪 
+                            </div> 
+ 
+                            <h3> 
+                                Gate 3 
+                            </h3> 
+ 
+                            <p> 
+                                West entrance 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     VEHICLE SELECTION 
+                     ========================================== --> 
+ 
+                <div id="vehicleSelection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToGates()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Select Vehicle Type 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Choose your vehicle type 
+ 
+                    </p> 
+ 
+ 
+                    <div class="selection-grid"> 
+ 
+ 
+                        <!-- BIKE --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectVehicle('Bike')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🏍️ 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Bike 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Two-wheeler parking 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- CAR --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectVehicle('Car')"> 
+ 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🚗 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Car 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Four-wheeler parking 
+ 
+                            </p> 
+ 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     PARKING OVERVIEW 
+                     ========================================== --> 
+ 
+                <div id="parkingSummarySection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <h2> 
+ 
+                        Parking Overview 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Current parking status 
+ 
+                    </p> 
+ 
+ 
+                    <div class="stats-grid"> 
+ 
+ 
+                        <!-- TOTAL --> 
+ 
+                        <div class="stat-card"> 
+ 
+                            <div class="stat-icon"> 
+                                🅿️ 
+                            </div> 
+ 
+                            <h3> 
+                                Total Slots 
+                            </h3> 
+ 
+                            <strong id="totalSlots"> 
+                                0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- AVAILABLE --> 
+ 
+                        <div class="stat-card"> 
+ 
+                            <div class="stat-icon"> 
+                                🟢 
+                            </div> 
+ 
+                            <h3> 
+                                Available 
+                            </h3> 
+ 
+                            <strong id="availableSlots"> 
+                                0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- OCCUPIED --> 
+ 
+                        <div class="stat-card"> 
+ 
+                            <div class="stat-icon"> 
+                                🔴 
+                            </div> 
+ 
+                            <h3> 
+                                Occupied 
+                            </h3> 
+ 
+                            <strong id="occupiedSlots"> 
+                                0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- VACANT --> 
+ 
+                        <div class="stat-card"> 
+ 
+                            <div class="stat-icon"> 
+                                🟢 
+                            </div> 
+ 
+                            <h3> 
+                                Vacant 
+                            </h3> 
+ 
+                            <strong id="vacantSlots"> 
+                                0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- SERVED --> 
+ 
+                        <div class="stat-card"> 
+ 
+                            <div class="stat-icon"> 
+                                🚗 
+                            </div> 
+ 
+                            <h3> 
+                                Served 
+                            </h3> 
+ 
+                            <strong id="servedVehicles"> 
+                                0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- REVENUE --> 
+ 
+                        <div class="stat-card revenue-card"> 
+ 
+                            <div class="stat-icon"> 
+                                💰 
+                            </div> 
+ 
+                            <h3> 
+                                Total Revenue 
+                            </h3> 
+ 
+                            <strong id="totalRevenue"> 
+                                ₹0 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                    <button class="next-btn" 
+                            onclick="showBikeNumberSection()"> 
+ 
+                        Next → 
+ 
+                    </button> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     BIKE NUMBER 
+                     ========================================== --> 
+ 
+                <div id="bikeNumberSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToSummary()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Enter Bike Number 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Enter your vehicle registration number 
+ 
+                    </p> 
+ 
+ 
+                    <div class="vehicle-number-box"> 
+ 
+ 
+                        <label for="bikeNumber"> 
+ 
+                            Bike Number 
+ 
+                        </label> 
+ 
+ 
+                        <input 
+                            type="text" 
+                            id="bikeNumber" 
+                            placeholder="Example: TS09AB1234" 
+                            maxlength="15" 
+                        > 
+ 
+ 
+                        <button class="next-btn" 
+                                onclick="showAllSlots()"> 
+ 
+                            Next → 
+ 
+                        </button> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     ALL PARKING SLOTS 
+                     ========================================== --> 
+ 
+                <div id="allSlotsSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToBikeNumber()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        All Parking Slots 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Select an available parking slot 
+ 
+                    </p> 
+<div id="slotsContainer" class="slot-grid"></div> 
+ 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     CONFIRM SLOTTING 
+                     ========================================== --> 
+ 
+                <div id="confirmSlotSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToAllSlots()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Confirm Slotting 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Review your parking details 
+ 
+                    </p> 
+ 
+ 
+                    <div class="confirm-slot-card"> 
+ 
+ 
+                        <div class="confirm-row"> 
+ 
+                            <span> 
+                                Bike Number 
+                            </span> 
+ 
+                            <strong id="confirmBikeNumber"> 
+                                - 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="confirm-row"> 
+ 
+                            <span> 
+                                Parking Area 
+                            </span> 
+ 
+                            <strong id="confirmArea"> 
+                                - 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="confirm-row"> 
+ 
+                            <span> 
+                                Entry Gate 
+                            </span> 
+ 
+                            <strong id="confirmGate"> 
+                                - 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="confirm-row"> 
+ 
+                            <span> 
+                                Vehicle 
+                            </span> 
+ 
+                            <strong id="confirmVehicle"> 
+                                - 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="confirm-row selected-slot-row"> 
+ 
+                            <span> 
+                                Selected Slot 
+                            </span> 
+ 
+                            <strong id="confirmSlot"> 
+                                - 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                        <div class="confirm-row"> 
+ 
+                            <span> 
+                                Parking Fee 
+                            </span> 
+ 
+                            <strong> 
+                                ₹20 
+                            </strong> 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                    <button class="confirm-btn" 
+                            onclick="confirmSlotting()"> 
+ 
+                        ✅ Confirm Slotting 
+ 
+                    </button> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     OLD AVAILABLE SLOTS 
+                     ========================================== --> 
+ 
+                <div id="slotSelection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToVehicle()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Available Parking Slots 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Slots suitable for your vehicle 
+ 
+                    </p> 
+ 
+ 
+                    <div id="slotSummary" 
+                         class="slot-summary"> 
+ 
+                    </div> 
+ 
+ 
+                    <div id="slotGrid" 
+                         class="slot-grid"> 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     OLD RECOMMENDATION 
+                     ========================================== --> 
+ 
+                <div id="recommendationSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToSlots()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Smart Slot Recommendation 
+ 
+                    </h2> 
+ 
+ 
+                    <div id="recommendationCard" 
+                         class="recommendation-card"> 
+ 
+                    </div> 
+ 
+ 
+                    <div id="algorithmDetails" 
+                         class="algorithm-details"> 
+ 
+                    </div> 
+ 
+ 
+                    <button id="confirmParkingBtn" 
+                            class="confirm-btn" 
+                            onclick="confirmParking()"> 
+ 
+                        ✅ Confirm Parking 
+ 
+                    </button> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+                <!-- ========================================== 
+                     OFFICE / IT CAMPUS 
+                     ========================================== --> 
+ 
+                <div id="officeParkingSection" 
+                     class="parking-next-section hidden"> 
+ 
+ 
+                    <button class="back-btn" 
+                            onclick="backToEnvironment()"> 
+ 
+                        ← Back 
+ 
+                    </button> 
+ 
+ 
+                    <h2> 
+ 
+                        Office / IT Campus 
+ 
+                    </h2> 
+ 
+ 
+                    <p class="parking-subtitle"> 
+ 
+                        Select the office parking area 
+ 
+                    </p> 
+ 
+ 
+                    <div class="selection-grid"> 
+ 
+ 
+                        <!-- BUILDING A --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Office Building A')"> 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🏢 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Building A 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Employee parking 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- BUILDING B --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Office Building B')"> 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🏢 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Building B 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Employee parking 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- VISITOR --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Visitor Parking')"> 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🅿️ 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Visitor Parking 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Parking for visitors 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+ 
+                        <!-- STAFF --> 
+ 
+                        <div class="selection-card" 
+                             onclick="selectParkingArea('Staff Parking')"> 
+ 
+                            <div class="selection-icon"> 
+ 
+                                🚗 
+ 
+                            </div> 
+ 
+ 
+                            <h3> 
+ 
+                                Staff Parking 
+ 
+                            </h3> 
+ 
+ 
+                            <p> 
+ 
+                                Reserved staff parking 
+ 
+                            </p> 
+ 
+                        </div> 
+ 
+ 
+                    </div> 
+ 
+ 
+                </div> 
+ 
+ 
+ 
+            </div> 
+ 
+ 
+        </main> 
+ 
+ 
+    </div> 
+ 
+ 
+ 
+    <!-- ========================================== 
+         JAVASCRIPT 
+         ========================================== --> 
+ 
+    <script src="dashboard.js"></script> 
+ 
+ 
+</body> 
+ 
+</html> 
